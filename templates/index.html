@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Zabytków</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="search-box">
+        <input id="pac-input" class="controls" type="text" placeholder="Search for monuments">
+    </div>
+    <div id="map"></div>
+    <button id="logout-btn" style="display:none;">Logout</button>
+    <div id="controls">
+        <label>
+            <input type="checkbox" id="toggle-user-markers" checked>
+            Pokaż znaki dodane przez użytkownika
+        </label>
+        <label>
+            <input type="checkbox" id="toggle-heritage-markers" checked>
+            Pokaż zabytki światowe
+        </label>
+    </div>
+    <div id="login">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <button id="register-btn">Register</button>
+    </div>
+    <div id="register" style="display:none;">
+        <h2>Register</h2>
+        <form id="register-form">
+            <input type="text" id="new-username" placeholder="Username" required>
+            <input type="password" id="new-password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <button id="login-btn">Login</button>
+    </div>
+    <div id="marker-form" style="display:none;">
+        <h2>Dodaj/Edytuj Zabytek</h2>
+        <form id="edit-marker-form">
+            <input type="text" id="marker-title" placeholder="Nazwa zabytku" required>
+            <textarea id="marker-description" placeholder="Opis zabytku" required></textarea>
+            <input type="text" id="marker-lat" placeholder="Szerokość geograficzna" required>
+            <input type="text" id="marker-lng" placeholder="Długość geograficzna" required>
+            <input type="hidden" id="marker-id">
+            <button type="submit">Zapisz</button>
+            <button type="button" id="delete-marker" style="display:none;">Usuń</button>
+            <button type="button" id="cancel-edit">Anuluj</button>
+        </form>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzIximeighg_kjwoi8gPEaM8wUyLvK57k&libraries=places&callback=initMap" async defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
